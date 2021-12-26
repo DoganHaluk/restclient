@@ -21,7 +21,7 @@ class DefaultReqResClient implements ReqResClient {
     @Override
     public Optional<User> findById(long id) {
         try {
-            return Optional.of(client.get()
+            return Optional.ofNullable(client.get()
                     .uri(userURI, uriBuilder -> uriBuilder.build(id))
                     .retrieve()
                     .bodyToMono(User.class)
